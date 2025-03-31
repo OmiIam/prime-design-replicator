@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeatureSection from '@/components/FeatureSection';
@@ -14,12 +14,30 @@ import ComparisonSection from '@/components/ComparisonSection';
 import FAQSection from '@/components/FAQSection';
 
 const Index = () => {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  
+  // Check if screen is mobile on initial load
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsSidebarCollapsed(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-background">
       <Sidebar />
-      <div className="flex-1 flex flex-col min-h-screen ml-0 md:ml-64">
+      
+      <div className="flex-1 flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        
+        <main className="flex-grow mt-16">
           <HeroSection />
           <MarketOverview />
           <EducationSection />
@@ -30,6 +48,7 @@ const Index = () => {
           <FAQSection />
           <CTASection />
         </main>
+        
         <Footer />
       </div>
     </div>

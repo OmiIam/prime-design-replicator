@@ -63,17 +63,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-        blue: {
-          50: '#EBF5FF',
-          100: '#E1EFFE',
-          200: '#C3DDFD',
-          300: '#A4CAFE',
-          400: '#76A9FA',
-          500: '#3F83F8',
-          600: '#1C64F2',
-          700: '#1A56DB',
-          800: '#1E429F',
-          900: '#233876',
+        palette: {
+          cream: '#F4EEE0',
+          mauve: '#6D5D6E',
+          deepMauve: '#4F4557',
+          darkPurple: '#393646'
         },
         trading: {
           positive: '#16C784',

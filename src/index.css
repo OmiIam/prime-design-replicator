@@ -5,45 +5,51 @@
 
 @layer base {
   :root {
-    /* Light theme */
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    /* New color palette */
+    --color-cream: 39 43% 95%;       /* #F4EEE0 */
+    --color-mauve: 285 9% 40%;       /* #6D5D6E */
+    --color-deep-mauve: 280 10% 30%; /* #4F4557 */
+    --color-dark-purple: 280 13% 25%; /* #393646 */
+    
+    /* Light theme with new colors */
+    --background: var(--color-cream);
+    --foreground: var(--color-dark-purple);
 
-    --card: 222 47% 15%;
-    --card-foreground: 210 40% 98%;
+    --card: var(--color-cream);
+    --card-foreground: var(--color-dark-purple);
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: var(--color-cream);
+    --popover-foreground: var(--color-dark-purple);
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--color-deep-mauve);
+    --primary-foreground: var(--color-cream);
 
-    --secondary: 217 19% 27%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: var(--color-mauve);
+    --secondary-foreground: var(--color-cream);
 
-    --muted: 215 28% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 280 10% 85%;
+    --muted-foreground: 280 10% 40%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
+    --accent: var(--color-mauve);
+    --accent-foreground: var(--color-cream);
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: var(--color-cream);
 
-    --border: 217 19% 27%;
-    --input: 217 19% 27%;
-    --ring: 224 76% 48%;
+    --border: var(--color-mauve);
+    --input: var(--color-mauve);
+    --ring: var(--color-deep-mauve);
     --radius: 0.5rem;
 
     /* Sidebar colors */
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 217 19% 27%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 19% 20%;
-    --sidebar-ring: 224 76% 48%;
+    --sidebar-background: var(--color-dark-purple);
+    --sidebar-foreground: var(--color-cream);
+    --sidebar-primary: var(--color-mauve);
+    --sidebar-primary-foreground: var(--color-cream);
+    --sidebar-accent: var(--color-deep-mauve);
+    --sidebar-accent-foreground: var(--color-cream);
+    --sidebar-border: var(--color-deep-mauve);
+    --sidebar-ring: var(--color-mauve);
   }
 }
 
@@ -54,24 +60,24 @@
 
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.4) 0%, rgba(0, 0, 0, 0.8) 90%);
+    background-image: radial-gradient(circle at 10% 20%, rgba(79, 69, 87, 0.2) 0%, rgba(57, 54, 70, 0.6) 90%);
     background-attachment: fixed;
   }
 
   .glass-panel {
-    @apply bg-card/70 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(244, 238, 224, 0.1);
   }
   
   /* Enhanced glass panel variations */
   .glass-panel-dark {
-    @apply bg-black/50 backdrop-blur-md border border-primary/20 rounded-xl shadow-lg;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.03);
+    @apply bg-black/40 backdrop-blur-md border border-primary/20 rounded-xl shadow-lg;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(244, 238, 224, 0.05);
   }
   
   .glass-panel-highlight {
-    @apply bg-card/70 backdrop-blur-sm border border-primary/30 rounded-xl shadow-lg;
-    box-shadow: 0 4px 30px rgba(63, 131, 248, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.07);
+    @apply bg-card/80 backdrop-blur-sm border border-primary/30 rounded-xl shadow-lg;
+    box-shadow: 0 4px 30px rgba(79, 69, 87, 0.15), inset 0 1px 1px rgba(244, 238, 224, 0.1);
   }
 }
 
@@ -88,45 +94,45 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(to bottom,
-      rgba(30, 41, 59, 0) 70%,
-      rgba(30, 41, 59, 1) 100%);
+      rgba(57, 54, 70, 0) 70%,
+      rgba(57, 54, 70, 1) 100%);
   pointer-events: none;
   z-index: 2;
 }
 
 /* Gradient text styles */
-.text-gradient-blue {
+.text-gradient {
   @apply text-transparent bg-clip-text;
-  background-image: linear-gradient(to right, #3F83F8, #16C784);
+  background-image: linear-gradient(to right, #4F4557, #6D5D6E);
 }
 
 .text-gradient-purple {
   @apply text-transparent bg-clip-text;
-  background-image: linear-gradient(to right, #9333ea, #c084fc);
+  background-image: linear-gradient(to right, #393646, #6D5D6E);
 }
 
-.text-gradient-gold {
+.text-gradient-cream {
   @apply text-transparent bg-clip-text;
-  background-image: linear-gradient(to right, #f59e0b, #fbbf24);
+  background-image: linear-gradient(to right, #F4EEE0, #e6d9be);
 }
 
 /* Button glow effect */
 .btn-glow {
-  box-shadow: 0 0 15px rgba(63, 131, 248, 0.5);
+  box-shadow: 0 0 15px rgba(79, 69, 87, 0.5);
   transition: all 0.3s ease;
 }
 
 .btn-glow:hover {
-  box-shadow: 0 0 20px rgba(63, 131, 248, 0.7);
+  box-shadow: 0 0 20px rgba(109, 93, 110, 0.7);
 }
 
-.btn-glow-gold {
-  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+.btn-glow-cream {
+  box-shadow: 0 0 15px rgba(244, 238, 224, 0.5);
   transition: all 0.3s ease;
 }
 
-.btn-glow-gold:hover {
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.7);
+.btn-glow-cream:hover {
+  box-shadow: 0 0 20px rgba(244, 238, 224, 0.7);
 }
 
 /* Enhanced animation for indicators */
@@ -163,8 +169,8 @@
 
 /* Grid background */
 .grid-background {
-  background-image: linear-gradient(rgba(30, 41, 59, 0.1) 1px, transparent 1px),
-                   linear-gradient(90deg, rgba(30, 41, 59, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(79, 69, 87, 0.1) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(79, 69, 87, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
   background-position: -1px -1px;
 }
@@ -184,14 +190,14 @@
   position: relative;
   border-radius: 0.75rem;
   background: linear-gradient(to right, rgb(0, 0, 0, 0), rgb(0, 0, 0, 0)) padding-box,
-              linear-gradient(to right, #3F83F8, #16C784) border-box;
+              linear-gradient(to right, #4F4557, #6D5D6E) border-box;
   border: 2px solid transparent;
 }
 
-.gradient-border-gold {
+.gradient-border-cream {
   position: relative;
   border-radius: 0.75rem;
   background: linear-gradient(to right, rgb(0, 0, 0, 0), rgb(0, 0, 0, 0)) padding-box,
-              linear-gradient(to right, #f59e0b, #fcd34d) border-box;
+              linear-gradient(to right, #F4EEE0, #e6d9be) border-box;
   border: 2px solid transparent;
 }
