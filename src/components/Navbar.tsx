@@ -7,10 +7,10 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/90 border-b border-border/50">
+    <nav className="fixed top-0 right-0 left-0 md:left-64 z-40 backdrop-blur-md bg-background/90 border-b border-border/50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <div className="flex items-center">
+          <div className="flex items-center ml-8 md:ml-0">
             <a href="/" className="flex items-center">
               <span className="text-2xl font-bold text-primary">PrimeTrade</span>
             </a>

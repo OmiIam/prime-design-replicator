@@ -1,8 +1,32 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Pause, Volume2, VolumeX } from "lucide-react";
 
 const HeroSection = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  
+  const togglePlay = () => {
+    const video = document.getElementById('hero-video') as HTMLVideoElement;
+    if (video) {
+      if (isPlaying) {
+        video.pause();
+      } else {
+        video.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+  
+  const toggleMute = () => {
+    const video = document.getElementById('hero-video') as HTMLVideoElement;
+    if (video) {
+      video.muted = !video.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <section className="pt-28 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/10 pointer-events-none"></div>
@@ -19,7 +43,7 @@ const HeroSection = () => {
               Advanced trading tools and analytics for professional traders. Start your trading journey with PrimeTrade today.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="font-medium px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary">
+              <Button size="lg" className="font-medium px-8 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary btn-glow">
                 Get Started <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button size="lg" variant="outline" className="font-medium px-8 border-primary/50 hover:bg-primary/10">
@@ -48,9 +72,10 @@ const HeroSection = () => {
               <div className="relative aspect-video w-full overflow-hidden rounded-lg">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10 pointer-events-none"></div>
                 <video 
+                  id="hero-video"
                   className="w-full h-full object-cover"
                   poster="/placeholder.svg"
-                  muted
+                  muted={isMuted}
                   loop
                   playsInline
                 >
@@ -58,8 +83,19 @@ const HeroSection = () => {
                   Your browser does not support the video tag.
                 </video>
                 <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <button className="bg-primary/80 hover:bg-primary text-white p-4 rounded-full transition-all duration-300 backdrop-blur-sm">
-                    <Play className="w-6 h-6" />
+                  <button 
+                    onClick={togglePlay}
+                    className="bg-primary/80 hover:bg-primary text-white p-4 rounded-full transition-all duration-300 backdrop-blur-sm"
+                  >
+                    {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                  </button>
+                </div>
+                <div className="absolute bottom-4 right-4 z-20">
+                  <button 
+                    onClick={toggleMute}
+                    className="bg-background/40 hover:bg-background/60 p-2 rounded-full backdrop-blur-sm"
+                  >
+                    {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
@@ -75,7 +111,7 @@ const HeroSection = () => {
                     strokeWidth="3"
                   />
                   <path
-                    d="M0,280 C100,230 200,260 300,180 C400,100 500,120 600,90 C700,60 800,40 800,40"
+                    d="M0,280 C100,230 200,260 300,180 C400,100 500,120 600,90 C700,60 800,40 800,40 V350 H0 Z"
                     fill="url(#areaGradient)"
                     fillOpacity="0.2"
                     stroke="none"
