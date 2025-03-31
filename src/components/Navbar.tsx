@@ -1,7 +1,8 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { User, Search } from "lucide-react";
+import { User, Search, BarChart3 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   return (
@@ -10,7 +11,10 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center ml-8 md:ml-0">
             <a href="/" className="flex items-center">
-              <span className="text-xl md:text-2xl font-bold text-gradient-purple">PrimeTrade</span>
+              <div className="w-10 h-10 rounded-md bg-gradient-to-br from-palette-deepMauve to-palette-mauve flex items-center justify-center mr-2 shadow-lg">
+                <BarChart3 className="w-6 h-6 text-palette-cream" />
+              </div>
+              <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-palette-deepMauve to-palette-mauve bg-clip-text text-transparent">PrimeTrade</span>
             </a>
           </div>
           
@@ -24,13 +28,13 @@ const Navbar = () => {
           </div>
           
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="hover:bg-palette-mauve/10">
               <Search className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="hover:bg-palette-mauve/10">
               <User className="h-5 w-5" />
             </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 hidden md:flex">Get Started</Button>
+            <Button className="bg-gradient-to-r from-palette-deepMauve to-palette-mauve text-palette-cream hover:opacity-90 hidden md:flex shadow-md">Get Started</Button>
           </div>
         </div>
       </div>

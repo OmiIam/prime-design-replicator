@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Toggle } from "@/components/ui/toggle";
+import { cn } from "@/lib/utils";
 
 const Sidebar = () => {
   // State for mobile sidebar visibility
@@ -75,7 +76,7 @@ const Sidebar = () => {
         variant="ghost"
         size="icon"
         onClick={toggleSidebar}
-        className="fixed top-4 left-4 z-50 md:hidden text-foreground"
+        className="fixed top-4 left-4 z-50 md:hidden text-foreground bg-gradient-to-br from-palette-deepMauve/90 to-palette-mauve/90 text-white"
       >
         <Menu className="w-5 h-5" />
       </Button>
@@ -90,21 +91,26 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full bg-sidebar z-50 transition-all duration-300 ease-in-out shadow-xl 
+        className={`fixed top-0 left-0 h-full z-50 transition-all duration-300 ease-in-out shadow-xl 
           ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
-          ${isCollapsed ? "w-20" : "w-64"}`}
+          ${isCollapsed ? "w-20" : "w-64"}
+          bg-gradient-to-b from-palette-darkPurple to-palette-deepMauve`}
       >
         <div className="flex flex-col h-full">
           {/* Logo and collapse button */}
           <div className={`flex items-center p-4 ${isCollapsed ? "justify-center" : "justify-between"}`}>
             {!isCollapsed && (
               <div className="flex items-center space-x-2">
-                <img src="/lovable-uploads/655cd7a9-fd81-4011-b207-e204804c2e4d.png" alt="PrimeTrade Logo" className="w-8 h-8" />
+                <div className="w-8 h-8 bg-gradient-to-br from-palette-cream/90 to-palette-cream/70 rounded-md flex items-center justify-center">
+                  <BarChart3 className="w-5 h-5 text-palette-darkPurple" />
+                </div>
                 <span className="text-sidebar-foreground font-bold text-lg">PrimeTrade</span>
               </div>
             )}
             {isCollapsed && (
-              <img src="/lovable-uploads/655cd7a9-fd81-4011-b207-e204804c2e4d.png" alt="PrimeTrade Logo" className="w-8 h-8" />
+              <div className="w-8 h-8 bg-gradient-to-br from-palette-cream/90 to-palette-cream/70 rounded-md flex items-center justify-center">
+                <BarChart3 className="w-5 h-5 text-palette-darkPurple" />
+              </div>
             )}
             
             {/* Desktop collapse button */}
@@ -112,7 +118,7 @@ const Sidebar = () => {
               variant="ghost" 
               size="icon" 
               onClick={toggleCollapse}
-              className="hidden md:flex text-sidebar-foreground hover:bg-sidebar-accent"
+              className="hidden md:flex text-sidebar-foreground hover:bg-sidebar-accent/50"
             >
               <ChevronLeft className={`w-5 h-5 transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''}`} />
             </Button>
@@ -137,7 +143,7 @@ const Sidebar = () => {
             <div className="px-4 py-2">
               <div className="text-sidebar-foreground text-xs mb-1">LANGUAGE</div>
               <div className="flex items-center">
-                <Toggle variant="outline" className="bg-sidebar-accent text-sidebar-foreground text-sm rounded-md">
+                <Toggle variant="outline" className="bg-sidebar-accent/50 text-sidebar-foreground text-sm rounded-md hover:bg-sidebar-accent">
                   English
                 </Toggle>
               </div>
@@ -145,7 +151,7 @@ const Sidebar = () => {
           )}
           
           {/* Divider */}
-          <div className="my-2 border-t border-sidebar-border opacity-30" />
+          <div className="my-2 border-t border-sidebar-border/30" />
           
           {/* Menu items */}
           <div className="flex-1 overflow-y-auto scrollbar-none">
@@ -155,11 +161,13 @@ const Sidebar = () => {
                   <li key={index}>
                     <a
                       href="#"
-                      className={`flex items-center rounded-md transition-colors ${
+                      className={cn(
+                        "flex items-center rounded-md transition-colors",
                         isCollapsed 
-                          ? "justify-center p-3 hover:bg-sidebar-accent" 
-                          : "px-4 py-2.5 hover:bg-sidebar-accent"
-                      }`}
+                          ? "justify-center p-3 hover:bg-sidebar-accent/50" 
+                          : "px-4 py-2.5 hover:bg-sidebar-accent/50",
+                        index === 0 && "bg-sidebar-accent/30"
+                      )}
                     >
                       <item.icon className={`${isCollapsed ? "w-5 h-5" : "w-5 h-5 mr-3"} text-sidebar-foreground`} />
                       {!isCollapsed && <span className="text-sidebar-foreground text-sm">{item.label}</span>}
@@ -171,7 +179,7 @@ const Sidebar = () => {
           </div>
           
           {/* Footer */}
-          <div className="p-4 border-t border-sidebar-border">
+          <div className="p-4 border-t border-sidebar-border/30">
             {!isCollapsed && (
               <div className="text-xs text-sidebar-foreground/70 text-center">
                 © 2024 PrimeTrade
@@ -188,4 +196,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
