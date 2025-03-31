@@ -126,7 +126,6 @@ const Sidebar = () => {
               <Switch 
                 checked={isDarkMode} 
                 onCheckedChange={setIsDarkMode} 
-                size="sm"
                 className="data-[state=checked]:bg-sidebar-primary"
               />
               {!isCollapsed && <Moon className="w-4 h-4 text-sidebar-foreground" />}
@@ -189,3 +188,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
