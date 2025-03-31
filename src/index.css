@@ -44,10 +44,13 @@
 
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.4) 0%, rgba(0, 0, 0, 0.8) 90%);
+    background-attachment: fixed;
   }
 
   .glass-panel {
-    @apply bg-card/70 backdrop-blur-sm border border-border/50 rounded-xl;
+    @apply bg-card/70 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -68,4 +71,41 @@
       rgba(30, 41, 59, 1) 100%);
   pointer-events: none;
   z-index: 2;
+}
+
+/* Gradient text styles */
+.text-gradient-blue {
+  @apply text-transparent bg-clip-text;
+  background-image: linear-gradient(to right, #3F83F8, #16C784);
+}
+
+.text-gradient-purple {
+  @apply text-transparent bg-clip-text;
+  background-image: linear-gradient(to right, #9333ea, #c084fc);
+}
+
+/* Button glow effect */
+.btn-glow {
+  box-shadow: 0 0 15px rgba(63, 131, 248, 0.5);
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(63, 131, 248, 0.7);
+}
+
+/* Enhanced animation for indicators */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite ease-in-out;
 }
